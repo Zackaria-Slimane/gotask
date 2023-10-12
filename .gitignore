@@ -1,0 +1,17 @@
+# Compiled Go binary files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Output of the go coverage tool, custom tool, and others
+*.out
+*.test
+*.json
+
+# Ignore the local .env file if you're using one
+.env
+
+# Go dependencies (created by `go get` or `go mod tidy`)
+vendor/
