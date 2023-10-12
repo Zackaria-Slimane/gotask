@@ -35,7 +35,6 @@ func main() {
 	}
 
 	Tasks := loadedTasks
-	tasksLength := len(Tasks)
 	printTasks(Tasks)
 	fmt.Println("======================================")
 
@@ -48,7 +47,7 @@ func main() {
 		case "add\n":
 			fmt.Print("Enter task name: ")
 			taskInput, _ := reader.ReadString('\n')
-			Tasks = append(Tasks, task{tasksLength + 1, taskInput, false})
+			Tasks = addTasks(Tasks, taskInput)
 			fmt.Println("Task successfully added")
 
 		case "list\n":
@@ -117,6 +116,16 @@ func loadTasks(filename string) ([]task, error) {
 	return tasks, nil
 }
 
+func addTasks(tasks []task, taskName string) []task {
+	newTask := task{
+		ID:        len(tasks) + 1,
+		Value:     taskName,
+		Completed: false,
+	}
+	tasks = append(tasks, newTask)
+	return tasks
+}
+
 func printTasks(tasks []task) {
 	green := color.New(color.FgGreen).SprintFunc()
 	red := color.New(color.FgRed).SprintFunc()
@@ -153,8 +162,6 @@ func markDone(tasks []task, id int) []task {
 			tasks[i].Completed = true
 			fmt.Println("Task ID: ", id, "marked as done")
 			return tasks
-		} else {
-			fmt.Println("Task ID not found try again")
 		}
 	}
 	return tasks
