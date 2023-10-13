@@ -61,7 +61,7 @@ func main() {
 				fmt.Println("Invalid input. Please enter a valid task ID.")
 				continue
 			}
-			Tasks = markDone(Tasks, taskID)
+			Tasks = toggleTask(Tasks, taskID)
 
 		case "remove\n":
 			fmt.Print("Enter the ID of the task you want to remove: ")
@@ -161,6 +161,17 @@ func markDone(tasks []task, id int) []task {
 		if task.ID == id {
 			tasks[i].Completed = true
 			fmt.Println("Task ID: ", id, "marked as done")
+			return tasks
+		}
+	}
+	return tasks
+}
+
+func toggleTask(tasks []task, id int) []task {
+	for i, task := range tasks {
+		if task.ID == id {
+			tasks[i].Completed = !tasks[i].Completed
+			fmt.Println("Task ID: ", id, "marked as ", task.Completed)
 			return tasks
 		}
 	}

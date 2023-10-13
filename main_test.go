@@ -48,3 +48,18 @@ func TestMarkDone(t *testing.T) {
 		}
 	}
 }
+
+func TestCheckCompletedStatus(t *testing.T) {
+	tasks := []task{{1, "Task 1", false}, {2, "Task 2", false}}
+	taskID := 1
+	initialStatus := tasks[0].Completed
+
+	updatedTasks := markDone(tasks, taskID)
+
+	// Check if the task with the specified ID has a completed status different than at first
+	for _, task := range updatedTasks {
+		if task.ID == taskID && task.Completed == initialStatus {
+			t.Errorf("Expected task with ID %d to have a completed status different than at first, but it's still the same.", taskID)
+		}
+	}
+}
