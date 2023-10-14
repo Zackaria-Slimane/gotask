@@ -18,7 +18,6 @@ func TestAddTask(t *testing.T) {
 			break
 		}
 	}
-
 	if !found {
 		t.Errorf("Expected new task to be added, but it's not in the task list.")
 	}
