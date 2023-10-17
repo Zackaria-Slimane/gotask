@@ -1,4 +1,6 @@
 # Go Cli tasks
+![clitask](https://github.com/Zackaria-Slimane/gotask/assets/79061155/d9e39ed8-8986-43d1-b807-4834bbbc94dc)
+
 
 ## About
 
