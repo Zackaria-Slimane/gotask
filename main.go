@@ -118,7 +118,7 @@ func loadTasks(filename string) ([]task, error) {
 
 func addTasks(tasks []task, taskName string) []task {
 	newTask := task{
-		ID:        len(tasks) + 1,
+		ID:        len(tasks)*100 + 1,
 		Value:     taskName,
 		Completed: false,
 	}
